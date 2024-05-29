@@ -1,0 +1,7 @@
+[package]
+name = "benchmark_pub_input_solidity"
+type = "bin"
+authors = [""]
+compiler_version = ">=0.29.0"
+
+[dependencies]
