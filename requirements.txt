@@ -1,0 +1,3 @@
+web3==6.11.0
+aiofiles==23.2.1
+anvil-web3==0.0.3

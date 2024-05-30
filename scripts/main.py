@@ -129,21 +129,19 @@ async def build_and_verify_simple_demo_proof(
     receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
     #print(f"[{len(input)}] Public Inputs Verification:", "\n\tSUCCESS:", receipt['status'] == 1, "\n\tGAS USED:", receipt['gasUsed'], )
     if receipt['status'] != 1:
-        print("Failed to verify proof")
-    print("TEST RUN: Public input:", len(input), "Gas used:", receipt['gasUsed']) 
-1,430677
-10,433755
-100,465452
-500,607954
-1000,786907
-5000,2252654
-10000,4172692
-
-
+        raise Exception("Failed to verify proof")
+    print(f"{len(input)},{str(receipt['gasUsed'])}") 
+    instance.kill()
 
 async def main():
-    for i in [1, 10, 100, 500, 1000, 5000, 10000]:
-        input = [1 for i in range(i)]
+    # this is the public input that will actually be passed
+    # for example, if i want my public input to be mostly non zero byte arrays
+    # then would be a larger number
+    INNER_PUB_INPUT = 1000
+    print("[# PUBLIC INPUTS],[GAS USED TO VERIFY]")
+     
+    for i in [i*25 for i in range(1, 60)]:
+        input = [INNER_PUB_INPUT for i in range(i)]
         await build_and_verify_simple_demo_proof(input)
 
 if __name__ == "__main__":
