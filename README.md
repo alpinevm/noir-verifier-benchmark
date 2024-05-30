@@ -8,7 +8,7 @@ With noir v0.29.0 and solc v0.8.20, the gas cost to verify a circuit with `n` pu
 <br>
 ```y = 369.95892089093695x + 429232.053763441```
 
-# Run
+# Run (create data)
 Requires solc, anvil (foundry), and noir (nargo) to be installed. 
 ```
 python -m pip install -r requirements.txt && python scripts/main.py
